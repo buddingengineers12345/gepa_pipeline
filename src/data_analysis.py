@@ -10,7 +10,13 @@ from pathlib import Path
 from typing import TypedDict
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from src.constants import TRAIN_CSV, TEST_CSV, SEED_PROMPT_FILE, ANALYSIS_REPORT, REPORTS_DIR
+from src.constants import (
+    TRAIN_CSV,
+    TEST_CSV,
+    SEED_PROMPT_FILE,
+    ANALYSIS_REPORT,
+    REPORTS_DIR,
+)
 
 
 class SplitStats(TypedDict):
@@ -39,12 +45,12 @@ def token_estimate(text: str) -> int:
 
 
 def analyse_split(rows: list[dict[str, str]], name: str) -> SplitStats:
-    inputs  = [r["input"]  for r in rows]
+    inputs = [r["input"] for r in rows]
     outputs = [r["output"] for r in rows]
 
-    input_lens  = [len(s) for s in inputs]
+    input_lens = [len(s) for s in inputs]
     output_lens = [len(s) for s in outputs]
-    input_toks  = [token_estimate(s) for s in inputs]
+    input_toks = [token_estimate(s) for s in inputs]
     output_toks = [token_estimate(s) for s in outputs]
 
     return SplitStats(
@@ -63,7 +69,9 @@ def analyse_split(rows: list[dict[str, str]], name: str) -> SplitStats:
     )
 
 
-def format_report(train_stats: SplitStats, test_stats: SplitStats, seed_prompt: str) -> str:
+def format_report(
+    train_stats: SplitStats, test_stats: SplitStats, seed_prompt: str
+) -> str:
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "=" * 70,
@@ -114,14 +122,14 @@ def main():
 
     print("Loading data...")
     train_rows = load_csv(TRAIN_CSV)
-    test_rows  = load_csv(TEST_CSV)
+    test_rows = load_csv(TEST_CSV)
     seed_prompt = SEED_PROMPT_FILE.read_text(encoding="utf-8")
 
     print(f"  Train: {len(train_rows)} examples")
     print(f"  Test : {len(test_rows)} examples")
 
     train_stats = analyse_split(train_rows, "train")
-    test_stats  = analyse_split(test_rows,  "test")
+    test_stats = analyse_split(test_rows, "test")
 
     report = format_report(train_stats, test_stats, seed_prompt)
 

@@ -12,9 +12,15 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.constants import (
-    TRAIN_CSV, TEST_CSV, SEED_PROMPT_FILE,
-    TASK_LM, REFLECTION_LM, MAX_METRIC_CALLS, VAL_SPLIT,
-    OPTIMIZATION_REPORT, REPORTS_DIR,
+    TRAIN_CSV,
+    TEST_CSV,
+    SEED_PROMPT_FILE,
+    TASK_LM,
+    REFLECTION_LM,
+    MAX_METRIC_CALLS,
+    VAL_SPLIT,
+    OPTIMIZATION_REPORT,
+    REPORTS_DIR,
 )
 
 
@@ -25,7 +31,10 @@ def load_csv(path: Path) -> list[dict[str, str]]:
 
 def csv_to_gepa_dataset(rows: list[dict[str, str]]):
     """Convert list of {input, output} dicts to GEPA DefaultDataInst format."""
-    return [{"input": r["input"], "additional_context": {}, "answer": r["output"]} for r in rows]
+    return [
+        {"input": r["input"], "additional_context": {}, "answer": r["output"]}
+        for r in rows
+    ]
 
 
 def split_train_val(rows: list[dict[str, str]], val_fraction: float):
@@ -83,11 +92,13 @@ def main():
     print(f"  Train={len(train_rows)}  Val={len(val_rows)}  Test={len(test_rows)}")
 
     trainset = csv_to_gepa_dataset(train_rows)
-    valset   = csv_to_gepa_dataset(val_rows)
+    valset = csv_to_gepa_dataset(val_rows)
 
     seed_candidate = {"system_prompt": seed_prompt}
 
-    print(f"\nRunning optimization (task_lm={TASK_LM}, reflection_lm={REFLECTION_LM})...")
+    print(
+        f"\nRunning optimization (task_lm={TASK_LM}, reflection_lm={REFLECTION_LM})..."
+    )
     start = datetime.now()
 
     result: object = gepa.optimize(  # type: ignore[misc]

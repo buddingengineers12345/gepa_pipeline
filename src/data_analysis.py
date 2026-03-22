@@ -3,20 +3,17 @@ Data analysis for the GEPA prompt optimization pipeline.
 Loads train.csv and test.csv, produces a detailed report written to reports/.
 """
 
-import csv
+import logging
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import TypedDict
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from src.constants import (
-    TRAIN_CSV,
-    TEST_CSV,
-    SEED_PROMPT_FILE,
-    ANALYSIS_REPORT,
-    REPORTS_DIR,
-)
+from src.constants import ANALYSIS_REPORT, REPORTS_DIR, SEED_PROMPT_FILE, TEST_CSV, TRAIN_CSV
+from src.utils import configure_logging, load_csv
+
+logger = logging.getLogger(__name__)
 
 
 class SplitStats(TypedDict):
@@ -32,11 +29,6 @@ class SplitStats(TypedDict):
     output_tok_avg: float
     total_tokens: int
     samples: list[dict[str, str]]
-
-
-def load_csv(path: Path) -> list[dict[str, str]]:
-    with open(path, newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))  # type: ignore[return-value]
 
 
 def token_estimate(text: str) -> int:
@@ -118,24 +110,25 @@ def format_report(
 
 
 def main():
+    configure_logging()
     REPORTS_DIR.mkdir(exist_ok=True)
 
-    print("Loading data...")
+    logger.info("Loading data...")
     train_rows = load_csv(TRAIN_CSV)
     test_rows = load_csv(TEST_CSV)
     seed_prompt = SEED_PROMPT_FILE.read_text(encoding="utf-8")
 
-    print(f"  Train: {len(train_rows)} examples")
-    print(f"  Test : {len(test_rows)} examples")
+    logger.info("  Train: %d examples", len(train_rows))
+    logger.info("  Test : %d examples", len(test_rows))
 
     train_stats = analyse_split(train_rows, "train")
     test_stats = analyse_split(test_rows, "test")
 
     report = format_report(train_stats, test_stats, seed_prompt)
 
-    _ = ANALYSIS_REPORT.write_text(report, encoding="utf-8")
-    print(f"\nReport written to: {ANALYSIS_REPORT}")
-    print(report)
+    ANALYSIS_REPORT.write_text(report, encoding="utf-8")
+    logger.info("Report written to: %s", ANALYSIS_REPORT)
+    logger.info("\n%s", report)
 
 
 if __name__ == "__main__":

@@ -132,7 +132,5 @@ dmypy.json
 
 # Temporary folder
 temp/
-data/
 reports/
-scripts/
 1

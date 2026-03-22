@@ -30,7 +30,7 @@ REFLECTION_LM = "ollama/qwen3:8b"  # Large model — generates improved prompts
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
 # ── Optimization settings ─────────────────────────────────────────────────────
-MAX_METRIC_CALLS = 100  # Budget: total LM calls allowed during optimisation
+MAX_METRIC_CALLS = 20  # Budget: total LM calls allowed during optimisation
 VAL_SPLIT = 0.2  # Fraction of training data used as validation
 
 # ── Report file names ─────────────────────────────────────────────────────────

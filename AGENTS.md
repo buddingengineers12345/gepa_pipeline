@@ -53,3 +53,17 @@ This repo uses AgentMemory (MCP server `localhost:3111`, project-scoped TEAM_ID 
 - Adjust optimization budget: `MAX_METRIC_CALLS` in `src/constants.py`
 - Run pipeline: `./pipeline.sh [--analysis | --optimization | --all]`
 - Import environment: source `.env` or rely on AgentMemory for persisted TEAM_ID injection
+
+## AgentMemory Insights (snapshot 2026-05-21)
+
+### Architecture & Design
+_No durable insights surfaced this snapshot._
+
+### Working Preferences & Conventions
+- AgentMemory is project-scoped by TEAM_ID `gepa_pipeline`; all cross-session memory queries via MCP use explicit `project` parameter or REST to localhost:3111.
+
+### Bugs, Incidents & Gotchas
+_No durable insights surfaced this snapshot._
+
+### Active Projects / WIP Context
+_No durable insights surfaced this snapshot._

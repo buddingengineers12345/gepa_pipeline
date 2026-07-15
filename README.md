@@ -2,7 +2,7 @@
 
 A comprehensive automated prompt optimization system using the **GEPA (General-Purpose Prompt Optimizer)** framework. This pipeline iteratively improves natural language prompts for mathematical reasoning tasks through intelligent evaluation and reflection-based prompt generation.
 
-## 📋 Project Overview
+##  Project Overview
 
 This project provides an end-to-end pipeline for optimizing prompts used by language models on problem-solving tasks. The system:
 
@@ -19,7 +19,7 @@ This project provides an end-to-end pipeline for optimizing prompts used by lang
 - **Modular design**: Separated concerns for data analysis, optimization, and reporting
 - **Comprehensive logging**: Pipeline execution is logged with timestamps and detailed output
 
-## 🏗️ Project Structure
+## ️ Project Structure
 
 ```
 prompt_gepa/
@@ -43,7 +43,7 @@ prompt_gepa/
 └── README.md                # This file
 ```
 
-## 🎯 Features
+##  Features
 
 ### 1. Data Analysis Module (`src/data_analysis.py`)
 
@@ -83,7 +83,7 @@ Features:
 - Timestamped logging of all operations
 - Exit on error with descriptive messages
 
-## 📦 Dependencies
+##  Dependencies
 
 ### Core Runtime Dependencies
 
@@ -107,7 +107,7 @@ flake8>=6.0.0            # Linter
 mypy>=1.0.0              # Static type checker
 ```
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -149,7 +149,7 @@ mypy>=1.0.0              # Static type checker
    echo "OPENAI_API_KEY=your-api-key-here" > .env
    ```
 
-## 💻 Usage
+##  Usage
 
 ### Run Full Pipeline
 
@@ -189,7 +189,7 @@ python src/data_analysis.py
 python src/optimization.py
 ```
 
-## ⚙️ Configuration
+## ️ Configuration
 
 Edit `src/constants.py` to customize the pipeline:
 
@@ -210,13 +210,13 @@ VAL_SPLIT = 0.2           # Validation set fraction (20%)
 # REFLECTION_LM = "openai/gpt-4"
 ```
 
-## 📊 Output Examples
+##  Output Examples
 
 ### Data Analysis Report
 
 ```
 ======================================================================
-GEPA PROMPT OPTIMIZATION — DATA ANALYSIS REPORT
+GEPA PROMPT OPTIMIZATION - DATA ANALYSIS REPORT
 Generated: 2026-03-21 22:30:45
 ======================================================================
 
@@ -235,7 +235,7 @@ TRAIN SET
 
 ```
 ======================================================================
-GEPA PROMPT OPTIMIZATION — RESULTS REPORT
+GEPA PROMPT OPTIMIZATION - RESULTS REPORT
 Generated: 2026-03-21 22:35:12
 Elapsed: 42.3s
 ======================================================================
@@ -252,7 +252,7 @@ CONFIGURATION
   max_metric_calls: 100
 ```
 
-## 🔧 Development
+##  Development
 
 ### Code Formatting
 
@@ -286,7 +286,7 @@ pytest
 
 (Test files can be added in a `tests/` directory)
 
-## 🌐 Model Options
+##  Model Options
 
 ### Local Inference (Ollama)
 
@@ -312,7 +312,7 @@ Requires: `OPENAI_API_KEY` environment variable
 
 Anthropic, Google, Cohere, etc. See [LiteLLM documentation](https://litellm.ai/).
 
-## 📝 Environment Variables
+##  Environment Variables
 
 - `OLLAMA_HOST`: Ollama server URL (default: `http://localhost:11434`)
 - `OPENAI_API_KEY`: OpenAI API key (if using OpenAI models)
@@ -326,7 +326,7 @@ OPENAI_API_KEY=sk-...
 
 Then load with: `source .env` or install `python-dotenv`
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Error: "gepa not installed"
 
@@ -356,18 +356,18 @@ Or use `uv run`:
 uv run python src/data_analysis.py
 ```
 
-## 📚 Additional Resources
+##  Additional Resources
 
 - [GEPA Documentation](https://github.com/stanfordchen/gepa)
 - [Ollama Documentation](https://ollama.ai)
 - [LiteLLM Documentation](https://litellm.ai/)
 - [Pydantic Documentation](https://docs.pydantic.dev/)
 
-## 📄 License
+##  License
 
 This project is provided as-is for research and educational purposes.
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please:
 
@@ -377,7 +377,7 @@ Contributions are welcome! Please:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📧 Support
+##  Support
 
 For issues, questions, or suggestions, please open an GitHub issue or contact the maintainers.
 

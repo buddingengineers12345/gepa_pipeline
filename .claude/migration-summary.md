@@ -6,10 +6,10 @@
 
 ## Files Created
 
-1. `/home/engineer/workspace/gepa_pipeline/AGENTS.md` — Canonical agent guide (model-agnostic)
-2. `/home/engineer/workspace/gepa_pipeline/CLAUDE.md` — Claude-specific thin wrapper
-3. `/home/engineer/workspace/gepa_pipeline/GEMINI.md` — Gemini-specific thin wrapper
-4. `/home/engineer/workspace/gepa_pipeline/CURSOR.md` — Cursor-specific thin wrapper
+1. `/home/engineer/workspace/gepa_pipeline/AGENTS.md` - Canonical agent guide (model-agnostic)
+2. `/home/engineer/workspace/gepa_pipeline/CLAUDE.md` - Claude-specific thin wrapper
+3. `/home/engineer/workspace/gepa_pipeline/GEMINI.md` - Gemini-specific thin wrapper
+4. `/home/engineer/workspace/gepa_pipeline/CURSOR.md` - Cursor-specific thin wrapper
 
 ## AgentMemory Configuration
 
@@ -19,19 +19,19 @@
 
 ## Context Loading Table
 
-| When the task involves… | Read |
+| When the task involves... | Read |
 |---|---|
 | Adding or modifying Python modules | `src/constants.py` for model/config setup |
 | Shell pipeline execution | `pipeline.sh` and the [README.md](./README.md) troubleshooting section |
 
 ## Validation Results
 
-✅ No references to `MEMORY.md` or `CONFLICTS.md` in any instruction file  
-✅ All relative links in the 4 root files resolve correctly  
-✅ Each wrapper file is ≤ ~20 lines  
-✅ AGENTS.md uses canonical TEAM_ID `gepa_pipeline`  
-✅ No source code changes; markdown-only refactor  
-✅ No new directory trees created (`.claude/` already existed)
+ No references to `MEMORY.md` or `CONFLICTS.md` in any instruction file  
+ All relative links in the 4 root files resolve correctly  
+ Each wrapper file is ≤ ~20 lines  
+ AGENTS.md uses canonical TEAM_ID `gepa_pipeline`  
+ No source code changes; markdown-only refactor  
+ No new directory trees created (`.claude/` already existed)
 
 ## Anomalies
 
